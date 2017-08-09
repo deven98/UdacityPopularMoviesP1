@@ -25,8 +25,6 @@ import static devapp.com.udacityp1.MainActivity.moviePosterLinks;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-
-
     Context context;
 
     public CustomAdapter(Context context ){
@@ -64,8 +62,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         ImageView moviePoster;
 
-        Context context;
-
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -76,10 +72,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         void bind(int position){
 
             movieName.setText(movieNames.get(position));
-            try {
-                //Picasso.with(context).load(moviePosterLinks.get(position)).into(moviePoster);
-            }catch(Exception e){
 
+            try {
+                Picasso.with(context).load(moviePosterLinks.get(position)).into(moviePoster);
+            }catch(Exception e){
+                e.printStackTrace();
                 Log.d("Load error","Cannot load image for "+ movieNames.get(position));
 
             }

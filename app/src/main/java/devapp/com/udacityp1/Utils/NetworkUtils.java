@@ -21,6 +21,7 @@ import devapp.com.udacityp1.CustomAdapter;
 import devapp.com.udacityp1.MainActivity;
 
 import static devapp.com.udacityp1.MainActivity.movieNames;
+import static devapp.com.udacityp1.MainActivity.moviePosterLinks;
 
 /**
  * Created by HP on 09-08-2017.
@@ -33,6 +34,8 @@ public class NetworkUtils {
     public static String BASE_URL = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
 
     public static String SIZE = "w185";
+
+    public static String IMAGE_BASE_URL =  "http://image.tmdb.org/t/p/w185/";
 
 
 
@@ -64,6 +67,12 @@ public class NetworkUtils {
                 String title = movie.getString("title");
 
                 movieNames.add(title);
+
+                String posterLink = movie.getString("poster_path");
+
+                moviePosterLinks.add(IMAGE_BASE_URL+posterLink);
+
+                Log.d("pos",posterLink);
 
                 Log.d("res", title);
             }

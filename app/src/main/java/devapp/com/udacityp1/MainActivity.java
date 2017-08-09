@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(customAdapter);
 
-        movieNames.add("PacMan");
-
         customAdapter.notifyDataSetChanged();
 
     }
@@ -53,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
         }
 
         @Override

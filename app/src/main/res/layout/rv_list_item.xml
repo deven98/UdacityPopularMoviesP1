@@ -28,19 +28,22 @@
             android:id="@+id/movie_name_tv"
             android:layout_width="120dp"
             android:layout_height="44dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
+            android:textStyle="bold"
+            android:background="@color/colorPrimary"
+            android:alpha="0.8"
             android:textAlignment="center"
             android:textSize="16sp"
-            android:textColor="#000"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="@+id/posterImageView"
             app:layout_constraintLeft_toLeftOf="@+id/posterImageView"
             app:layout_constraintRight_toRightOf="@+id/posterImageView"
             app:layout_constraintTop_toTopOf="@+id/posterImageView"
-            app:layout_constraintVertical_bias="0.848" />
+            app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
