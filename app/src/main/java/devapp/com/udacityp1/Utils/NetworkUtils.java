@@ -3,25 +3,22 @@ package devapp.com.udacityp1.Utils;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import devapp.com.udacityp1.CustomAdapter;
-import devapp.com.udacityp1.MainActivity;
-
+import static devapp.com.udacityp1.MainActivity.movieDescription;
 import static devapp.com.udacityp1.MainActivity.movieNames;
 import static devapp.com.udacityp1.MainActivity.moviePosterLinks;
+import static devapp.com.udacityp1.MainActivity.movieRating;
+import static devapp.com.udacityp1.MainActivity.movieReleaseDate;
 
 /**
  * Created by HP on 09-08-2017.
@@ -31,17 +28,24 @@ public class NetworkUtils {
 
     private static String API_KEY = "7ed6c9e0c8221f0764db55ce52e1cfda";
 
-    public static String BASE_URL = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
+    public static String POPULAR_BASE_URL = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
+
+    public static String RATING_BASE_URL= "http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key="+ API_KEY +"&page=1&vote_count.gte=50";
 
     public static String SIZE = "w185";
 
     public static String IMAGE_BASE_URL =  "http://image.tmdb.org/t/p/w185/";
 
-
+    public static boolean searchByPopularity = true;
 
     public static void loadMovies(Context context){
 
-        Uri uri = Uri.parse(BASE_URL).buildUpon().build();
+        String URLToUse = null;
+
+        if(searchByPopularity){URLToUse = POPULAR_BASE_URL;}
+        else if(!searchByPopularity){URLToUse = RATING_BASE_URL;}
+
+        Uri uri = Uri.parse(URLToUse).buildUpon().build();
         String s = null;
         try{
         s = getResponseFromHttpUrl(new URL(uri.toString()));}
@@ -65,12 +69,19 @@ public class NetworkUtils {
                 JSONObject movie = movies.getJSONObject(i);
 
                 String title = movie.getString("title");
-
                 movieNames.add(title);
 
                 String posterLink = movie.getString("poster_path");
-
                 moviePosterLinks.add(IMAGE_BASE_URL+posterLink);
+
+                String movieOverview = movie.getString("overview");
+                movieDescription.add(movieOverview);
+
+                String release = movie.getString("release_date");
+                movieReleaseDate.add(release);
+
+                String rating = movie.getString("vote_average");
+                movieRating.add(rating);
 
                 Log.d("pos",posterLink);
 

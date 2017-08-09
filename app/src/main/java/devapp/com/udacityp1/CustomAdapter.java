@@ -27,9 +27,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     Context context;
 
-    public CustomAdapter(Context context ){
+    final private ListItemClickListener mOnClickListener;
+
+    public CustomAdapter(Context context, ListItemClickListener listener ){
 
         this.context = context;
+
+        mOnClickListener = listener;
+    }
+
+
+    public interface ListItemClickListener{
+
+        void onListItemClick(int clickedItemIndex);
+
     }
 
     @Override
@@ -56,7 +67,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         return movieNames.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView movieName;
 
@@ -67,6 +78,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
             movieName = (TextView) itemView.findViewById(R.id.movie_name_tv);
             moviePoster = (ImageView) itemView.findViewById(R.id.posterImageView);
+
+            itemView.setOnClickListener(this);
         }
 
         void bind(int position){
@@ -82,6 +95,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             }
         }
 
+        @Override
+        public void onClick(View view) {
+
+            int clickedPosition = getAdapterPosition();
+            mOnClickListener.onListItemClick(clickedPosition);
+
+        }
     }
 
 

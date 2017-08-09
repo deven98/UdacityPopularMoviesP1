@@ -7,14 +7,20 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:id ="@+id/progressBar"
+            android:visibility="invisible"/>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recyclerView">
+            android:layout_height="match_parent">
+
 
         </android.support.v7.widget.RecyclerView>
 
