@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
             movieNames.clear();
             moviePosterLinks.clear();
 
+            customAdapter.notifyDataSetChanged();
+
             progressBar.setVisibility(View.VISIBLE);
         }
 
