@@ -1,6 +1,7 @@
 package devapp.com.udacityp1;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class DetailActivity extends AppCompatActivity {
     ImageView moviePoster;
 
     int index;
+
 
     void initialize(){
 

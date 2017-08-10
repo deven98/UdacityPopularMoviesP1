@@ -1,6 +1,7 @@
 package devapp.com.udacityp1;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
     CustomAdapter customAdapter;
     ProgressBar progressBar;
 
+    int columnsInGrid;
+
     public static ArrayList<String> movieNames = new ArrayList<>();
     public static ArrayList<String> moviePosterLinks = new ArrayList<>();
     public static ArrayList<String> movieDescription = new ArrayList<>();
@@ -28,8 +31,14 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
     public static ArrayList<String> movieReleaseDate = new ArrayList<>();
 
     void initialize(){
+
+        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            columnsInGrid = 3;
+        }
+        else{columnsInGrid = 4;}
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        gridLayoutManager = new GridLayoutManager(this,3);
+        gridLayoutManager = new GridLayoutManager(this,columnsInGrid);
         customAdapter = new CustomAdapter(this,this);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }

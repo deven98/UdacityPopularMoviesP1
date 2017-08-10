@@ -27,11 +27,7 @@ public class NetworkUtils {
 
     private static String POPULAR_BASE_URL = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
 
-    //public static String RATING_BASE_URL= "http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key="+ API_KEY +"&page=1&vote_count.gte=50";
-
     private static String RATING_BASE_URL= "http://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY;
-
-    //public static String SIZE = "w185";
 
     private static String IMAGE_BASE_URL =  "http://image.tmdb.org/t/p/w185/";
 
