@@ -20,10 +20,6 @@ import static devapp.com.udacityp1.MainActivity.moviePosterLinks;
 import static devapp.com.udacityp1.MainActivity.movieRating;
 import static devapp.com.udacityp1.MainActivity.movieReleaseDate;
 
-/**
- * Created by HP on 09-08-2017.
- */
-
 public class NetworkUtils {
 
     private static String API_KEY = "7ed6c9e0c8221f0764db55ce52e1cfda";
