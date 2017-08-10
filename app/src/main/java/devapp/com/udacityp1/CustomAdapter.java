@@ -6,30 +6,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 import static devapp.com.udacityp1.MainActivity.movieNames;
 import static devapp.com.udacityp1.MainActivity.moviePosterLinks;
 
-/**
- * Created by HP on 09-08-2017.
- */
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    Context context;
+    private Context context;
 
     final private ListItemClickListener mOnClickListener;
 
-    public CustomAdapter(Context context, ListItemClickListener listener ){
+    public CustomAdapter(Context context, ListItemClickListener listener){
 
         this.context = context;
 
@@ -100,6 +93,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
             int clickedPosition = getAdapterPosition();
             mOnClickListener.onListItemClick(clickedPosition);
+
+            view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.on_click));
 
         }
     }

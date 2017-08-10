@@ -1,9 +1,7 @@
 package devapp.com.udacityp1;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,10 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import devapp.com.udacityp1.Utils.NetworkUtils;
 
@@ -25,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
     GridLayoutManager gridLayoutManager;
     CustomAdapter customAdapter;
     ProgressBar progressBar;
-    CustomAdapter.ListItemClickListener listItemClickListener;
 
     public static ArrayList<String> movieNames = new ArrayList<>();
     public static ArrayList<String> moviePosterLinks = new ArrayList<>();
@@ -99,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
     }
 
 
-    public class fetchMovieData extends AsyncTask<Void,Void,Void>{
+    private class fetchMovieData extends AsyncTask<Void,Void,Void>{
 
         @Override
         protected void onPreExecute() {
